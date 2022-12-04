@@ -1,4 +1,4 @@
-import { voteCollection,pollCollection,choiceCollection } from "../database/db";
+import { voteCollection,pollCollection,choiceCollection } from "../database/db.js";
 
 export async function voteValidation(req,res,next){
 const {_id,choiceId} = req.params

@@ -1,4 +1,4 @@
-import { voteCollection } from "../database/db";
+import { voteCollection } from "../database/db.js";
 import dayjs from "dayjs";
 
 export async function postVote(req, res) {
@@ -19,7 +19,7 @@ export async function getResult(req,res){
     const {pollId} = req.params
 
    try{
-
+    console.log("trabalhando....") 
    }catch(err){
     console.log(err)
 } 

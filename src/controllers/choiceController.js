@@ -1,4 +1,4 @@
-import { choiceCollection } from "../database/db"
+import { choiceCollection } from "../database/db.js"
 
 export async function postChoice(req, res) {
   const { titleChoice, pollIdChoice } = req.body;

@@ -1,5 +1,5 @@
-import {choiceSchema} from "../models/choiceSchema"
-import { pollCollection, choiceCollection } from "../database/db";
+import {choiceSchema} from "../models/choiceSchema.js"
+import { pollCollection, choiceCollection } from "../database/db.js";
 import dayjs from "dayjs";
 
 
@@ -25,7 +25,7 @@ if(newChoice){
 
 const {expireAt} = pollCollection.find(pollId)
 const date = dayjs(expireAt)
-const now = dayjs(new Date().format("DD/MM/YYYY HH:mm:"))
+const now = dayjs(new Date().format("YYYY/MM/DD HH:mm:"))
 if(now.isAfter(date)=== true){
   return res.sendStatus(403)  
 }

@@ -1,4 +1,4 @@
-import { pollCollection } from "../database/db";
+import { pollCollection } from "../database/db.js";
 import { ObjectId } from "mongodb";
 import dayjs from "dayjs";
 export async function postPoll(req, res) {
