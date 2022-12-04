@@ -2,7 +2,7 @@ import { pollCollection } from "../database/db.js";
 import { ObjectId } from "mongodb";
 import dayjs from "dayjs";
 export async function postPoll(req, res) {
-  const { titlePoll, expiration } = req.locals.poll;
+  const { titlePoll, expiration } = res.locals.poll;
 
   try {
     await pollCollection.insertOne({ title: titlePoll, expiredAt: expiration });
