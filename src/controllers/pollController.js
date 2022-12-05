@@ -2,10 +2,10 @@ import { pollCollection } from "../database/db.js";
 import { ObjectId } from "mongodb";
 import dayjs from "dayjs";
 export async function postPoll(req, res) {
-  const { titlePoll, expiration } = res.locals.poll;
+  const poll = req.body;
 
   try {
-    await pollCollection.insertOne({ title: titlePoll, expiredAt: expiration });
+    await pollCollection.insertOne(poll);
     res.sendStatus(201);
   } catch (err) {
     console.log(err);

@@ -1,13 +1,15 @@
-import { pollCollection, voteCollection } from "../database/db.js";
+import { choiceCollection, pollCollection, voteCollection } from "../database/db.js";
 import dayjs from "dayjs";
+import { ObjectId } from "mongodb";
 
 export async function postVote(req, res) {
-  const { _id, choiceId } = req.params;
+  const {id} = req.params;
+  console.log(id)
   try {
-    await voteCollection.insertOnte({
-        _id,
-        createdAt:dayjs(new Date().format("DD/MM/YYYY HH:mm:")),
-        choiceId
+    await voteCollection.insertOne({
+       
+        createdAt:dayjs().format("DD/MM/YYYY HH:mm"),
+        choiceId:id
     })
     res.sendStatus(201)
   } catch (err) {
@@ -16,12 +18,17 @@ export async function postVote(req, res) {
 }
 
 export async function getResult(req,res){
-    const {pollId} = req.params;
-
+    const id = req.params;
+   console.log(id)
    try{
-  //  const chosenPoll = await pollCollection.find(pollId);
-  //   res.send(mostVoted)
+   const chosenPoll = await pollCollection.findOne({_id:ObjectId(id)});
+   console.log(chosenPoll)
+  //  const choices = await choiceCollection.find()
+  //  console.log(choices)
+   
     console.log("trabalhando")
+    res.sendStatus(200)
+
    }catch(err){
     console.log(err)
 } 
